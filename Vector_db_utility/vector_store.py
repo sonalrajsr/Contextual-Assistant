@@ -26,3 +26,5 @@ def store_documents_in_faiss(chunks, document_name):
     ids = [str(uuid.uuid4()) for _ in chunks]
     vector_store.add_documents(documents=chunks, ids=ids)
     vector_store.save_local(os.path.join('Data/vector_db', document_name))
+    vector_store = FAISS.load_local(os.path.join('Data/vector_db', document_name), embedding_model)
+    return vector_store
