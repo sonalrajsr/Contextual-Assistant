@@ -11,9 +11,18 @@ from Vector_db_utility.vector_store import store_documents_in_faiss
 from Vector_db_utility.vector_db_query import query_faiss_vector_store
 
 def process_all(query, audio, image, pdf):
-    if audio is not None:
+    warning = ""
+    if audio is not None and query and query.strip():
+        warning = "Both text and audio provided. Audio will be used."
         text_from_audio = speech_to_text(audio)
         query = text_from_audio if text_from_audio else "No query provided."
+    elif audio is not None:
+        text_from_audio = speech_to_text(audio)
+        query = text_from_audio if text_from_audio else "No query provided."
+    elif query and query.strip():
+        query = query.strip()
+    else:
+        query = "No query provided."
 
     if image is not None:
         image_result = image_identification(image)
@@ -29,9 +38,8 @@ def process_all(query, audio, image, pdf):
     else:
         pdf_result = ""
 
-    # Dummy result
     llm_prompt = f"User Query: {query}\nImage Result: {image_result}\nPDF Result: {pdf_result}"
-    result = f"{text_to_text(llm_prompt)}"
+    result = f"{warning}\n{text_to_text(llm_prompt)}" if warning else f"{text_to_text(llm_prompt)}"
 
     # Generate TTS audio for result
     tts = gTTS(result)
@@ -46,6 +54,7 @@ with gr.Blocks() as demo:
 
     with gr.Row():
         with gr.Column():
+            gr.Markdown("**Type your question OR record your question (not both):**")
             query = gr.Textbox(label="Type your question")
             audio = gr.Audio(sources="microphone", type="filepath", label="Or record your question")
             image = gr.Image(type="filepath", label="Upload an image")
