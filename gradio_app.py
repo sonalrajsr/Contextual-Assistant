@@ -1,6 +1,8 @@
+import os
 import gradio as gr
 from gtts import gTTS
 import tempfile
+import shutil
 from document_utility.document_loader import documents_loader
 from document_utility.split_document import split_documents
 from Utility_text_speech.image_identification import image_identification, encode_image
@@ -9,6 +11,9 @@ from Utility_text_speech.speech_to_text import speech_to_text
 from Utility_text_speech.text_to_text import text_to_text
 from Vector_db_utility.vector_store import store_documents_in_faiss
 from Vector_db_utility.vector_db_query import query_faiss_vector_store
+
+DATA_FOLDER = "Data/PDF_Files"
+os.makedirs(DATA_FOLDER, exist_ok=True)
 
 def process_all(query, audio, image, pdf):
     warning = ""
@@ -30,9 +35,13 @@ def process_all(query, audio, image, pdf):
         image_result = ""
 
     if pdf is not None:
-        document = documents_loader(pdf)
+        pdf_name = os.path.basename(getattr(pdf, "name", os.path.basename(pdf)))
+        save_path = os.path.join(DATA_FOLDER, pdf_name)
+        shutil.copy(pdf, save_path)
+        # Now use the saved PDF for processing
+        document = documents_loader(save_path)
         chunks = split_documents(document)
-        vector_store = store_documents_in_faiss(chunks, pdf.name)
+        vector_store = store_documents_in_faiss(chunks, pdf_name)
         context = query_faiss_vector_store(vector_store, query)
         pdf_result = context if context else "No relevant information found in PDF."
     else:
