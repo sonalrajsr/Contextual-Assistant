@@ -1,11 +1,11 @@
-# 🩺 Medical Super Bot
+# 🧠 Contextual Super Bot
 
-**Medical Super Bot** is an AI-powered assistant that allows users to:
-- Ask medical questions via text or voice
-- Upload and analyze medical images
-- Upload PDFs/books as knowledge bases for contextual answers
+**Contextual Super Bot** is an AI-powered assistant that allows users to:
+- Ask questions via text or voice
+- Upload and analyze any images
+- Upload any PDFs/books as knowledge bases for contextual answers
 - Select from pre-uploaded knowledge base PDFs
-- Get answers with context from documents and images
+- Get answers with context from uploaded documents and images
 - Listen to answers via text-to-speech
 
 The app uses [Gradio](https://gradio.app/) for the frontend and integrates document processing, vector search, LLMs, and speech technologies.
@@ -15,7 +15,7 @@ The app uses [Gradio](https://gradio.app/) for the frontend and integrates docum
 ## 🚀 Features
 
 - **Text & Voice Queries:** Ask questions by typing or recording your voice.
-- **Image Analysis:** Upload medical images for AI-based identification.
+- **Image Analysis:** Upload any image for AI-based identification.
 - **PDF/Book Upload:** Upload your own PDFs to use as a knowledge base.
 - **Knowledge Base Selection:** Choose from existing PDFs for contextual answers.
 - **Contextual LLM Answers:** Answers are generated using context from documents and images.
@@ -27,7 +27,7 @@ The app uses [Gradio](https://gradio.app/) for the frontend and integrates docum
 ## 🗂️ Project Structure
 
 ```
-Medical Super Bot/
+Contextual Super Bot/
 │
 ├── gradio_app.py                # Main Gradio app
 ├── document_utility/
@@ -55,7 +55,7 @@ Medical Super Bot/
 
 ```sh
 git clone <your-repo-url>
-cd Medical Super Bot
+cd Contextual Super Bot
 ```
 
 ### 2. **Create and Activate a Virtual Environment (Recommended)**
@@ -111,8 +111,8 @@ python gradio_app.py
 ### 1. **User Interface**
 
 - **Type your question** or **record your question** (not both).
-- **Upload an image** (optional).
-- **Upload a PDF/book** (optional, will be saved for future use).
+- **Upload any image** (optional).
+- **Upload any PDF/book** (optional, will be saved for future use).
 - **Select a knowledge base PDF** from the dropdown (optional, uses pre-uploaded PDFs).
 - **Submit** to get an answer.
 - **Listen** to the answer using the speaker button.
@@ -172,6 +172,8 @@ A: Yes! Upload them via the UI; they’ll be saved and available for future quer
 A: Refresh the app after uploading new PDFs.
 
 **Q: Can I deploy this online?**  
-A: Yes, use Gradio’s `share=True` or deploy on HuggingFace Spaces, Streamlit Cloud, or your own server
+A: Yes, use Gradio’s `share=True` or deploy on HuggingFace Spaces, Streamlit Cloud, or your own server.
 
-**Enjoy using Medical Super Bot!**
+---
+
+**Enjoy using Contextual Super Bot!**
