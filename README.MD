@@ -159,7 +159,7 @@ python gradio_app.py
 
 ## 📄 License
 
-MIT License (or your chosen license)
+MIT License
 
 ---
 
