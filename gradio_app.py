@@ -49,7 +49,7 @@ def process_all(query, audio, image, pdf, kb_pdf):
         context = query_faiss_vector_store(vector_store, query)
         pdf_result = context if context else "No relevant information found in PDF."
     elif kb_pdf and kb_pdf != "None":
-        kb_pdf_db_path = os.path.join(kb_pdf + ".faiss")
+        kb_pdf_db_path = os.path.join(kb_pdf)
         vector_store = load_vector_store(kb_pdf_db_path)
         context = query_faiss_vector_store(vector_store, query)
         pdf_result = context if context else "No relevant information found in PDF."
