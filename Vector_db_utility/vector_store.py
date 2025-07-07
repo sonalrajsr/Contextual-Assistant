@@ -25,9 +25,25 @@ def store_documents_in_faiss(chunks, document_name):
 
     ids = [str(uuid.uuid4()) for _ in chunks]
     vector_store.add_documents(documents=chunks, ids=ids)
-    vector_store.save_local(os.path.join('Data/vector_db', document_name))
+    vector_store.save_local(os.path.join('Data/vector_db', document_name.split('.')[0]))
     vector_store = FAISS.load_local(
-        os.path.join('Data/vector_db', document_name),
+        os.path.join('Data/vector_db', document_name.split('.')[0]),
+        embedding_model,
+        allow_dangerous_deserialization=True
+    )
+    return vector_store
+
+def load_vector_store(document_name):
+    """
+    Load a FAISS vector store from the specified document name.
+    Args:
+        document_name (str): Name of the document to load.
+    Returns:
+        FAISS: Loaded FAISS vector store.
+    """
+    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    vector_store = FAISS.load_local(
+        os.path.join('Data/vector_db', document_name.split('.')[0]),
         embedding_model,
         allow_dangerous_deserialization=True
     )
