@@ -173,6 +173,5 @@ A: Refresh the app after uploading new PDFs.
 
 **Q: Can I deploy this online?**  
 A: Yes, use Gradio’s `share=True` or deploy on HuggingFace Spaces, Streamlit Cloud, or your own server
----
 
 **Enjoy using Medical Super Bot!**
