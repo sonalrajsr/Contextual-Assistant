@@ -9,7 +9,10 @@
 - Listen to answers via text-to-speech
 
 The app uses [Gradio](https://gradio.app/) for the frontend and integrates document processing, vector search, LLMs, and speech technologies.
+
+## Pipeline
 ![Project Logo](./Artecture.png)
+
 ---
 
 ## 🚀 Features
