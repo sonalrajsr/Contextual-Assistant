@@ -27,6 +27,8 @@ The app uses [Gradio](https://gradio.app/) for the frontend and integrates docum
 ## 🗂️ Project Structure
 
 ```
+![Project Logo](./Artecture.png)
+
 Contextual Super Bot/
 │
 ├── gradio_app.py                # Main Gradio app
