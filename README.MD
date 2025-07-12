@@ -9,7 +9,7 @@
 - Listen to answers via text-to-speech
 
 The app uses [Gradio](https://gradio.app/) for the frontend and integrates document processing, vector search, LLMs, and speech technologies.
-
+![Project Logo](./Artecture.png)
 ---
 
 ## 🚀 Features
@@ -27,7 +27,6 @@ The app uses [Gradio](https://gradio.app/) for the frontend and integrates docum
 ## 🗂️ Project Structure
 
 ```
-![Project Logo](./Artecture.png)
 
 Contextual Super Bot/
 │
